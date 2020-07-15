@@ -62,6 +62,4 @@ TennisGame1.prototype.getScore = function() {
     return score;
 };
 
-if (typeof window === "undefined") {
     module.exports = TennisGame1;
-}

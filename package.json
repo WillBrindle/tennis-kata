@@ -4,7 +4,7 @@
   "description": "A kata to practice refactoring code, working with an example of Tennis scoring.",
   "main": "TennisGame1.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Will Brindle",
   "license": "ISC",
