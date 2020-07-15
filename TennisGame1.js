@@ -22,17 +22,15 @@ class TennisGame1 {
     }
 
     if (this.player1.score.value >= 4 || this.player2.score.value >= 4) {
-      const minusResult = this.player1.score.value - this.player2.score.value;
-      if (minusResult === 1) {
-        return 'Advantage player1';
+      const differenceInScores = this.player1.score.value - this.player2.score.value;
+      const winningPlayer = differenceInScores > 0 ? this.player1 : this.player2;
+      const gameFinished = Math.abs(differenceInScores) >= 2;
+
+      if (gameFinished) {
+        return `Win for ${winningPlayer.name}`;
       }
-      if (minusResult === -1) {
-        return 'Advantage player2';
-      }
-      if (minusResult >= 2) {
-        return 'Win for player1';
-      }
-      return 'Win for player2';
+
+      return `Advantage ${winningPlayer.name}`;
     }
 
     for (let i = 1; i < 3; i += 1) {
