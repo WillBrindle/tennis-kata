@@ -36,7 +36,7 @@ class TennisGame1 {
       else if (minusResult >= 2) score = 'Win for player1';
       else score = 'Win for player2';
     } else {
-      for (let i = 1; i < 3; i++) {
+      for (let i = 1; i < 3; i += 1) {
         if (i === 1) tempScore = this.m_score1;
         else {
           score += '-';
@@ -54,6 +54,8 @@ class TennisGame1 {
             break;
           case 3:
             score += 'Forty';
+            break;
+          default:
             break;
         }
       }

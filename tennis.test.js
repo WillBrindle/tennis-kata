@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 const TennisGame = require('./TennisGame1.js');
 
 const allScores = [
@@ -41,16 +43,12 @@ const allScores = [
   [14, 16, 'Win for player2'],
 ];
 
-const checkScore = function (player1Score, player2Score, expectedScore) {
+const checkScore = (player1Score, player2Score, expectedScore) => {
   const highestScore = Math.max(player1Score, player2Score);
-  let game;
-  let result;
-  const message = '';
-  const ok = false;
   let i;
 
-  game = new TennisGame('player1', 'player2');
-  for (i = 0; i < highestScore; i++) {
+  const game = new TennisGame('player1', 'player2');
+  for (i = 0; i < highestScore; i += 1) {
     if (i < player1Score) {
       game.wonPoint('player1');
     }
@@ -58,7 +56,7 @@ const checkScore = function (player1Score, player2Score, expectedScore) {
       game.wonPoint('player2');
     }
   }
-  result = game.getScore();
+  const result = game.getScore();
 
   expect(result).toEqual(expectedScore);
 };
