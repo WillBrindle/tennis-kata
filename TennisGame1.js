@@ -12,8 +12,6 @@ class TennisGame1 {
   }
 
   getScore() {
-    let score = '';
-    let tempScore = 0;
     if (this.player1.score.value === this.player2.score.value) {
       if (this.player1.score.value < 3) {
         return `${this.player1.score.label}-All`;
@@ -33,15 +31,7 @@ class TennisGame1 {
       return `Advantage ${winningPlayer.name}`;
     }
 
-    for (let i = 1; i < 3; i += 1) {
-      if (i === 1) tempScore = this.player1.score;
-      else {
-        score += '-';
-        tempScore = this.player2.score;
-      }
-      score += tempScore.label;
-    }
-    return score;
+    return `${this.player1.score.label}-${this.player2.score.label}`;
   }
 
   getPlayer(name) {
