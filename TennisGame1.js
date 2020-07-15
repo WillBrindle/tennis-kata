@@ -14,8 +14,8 @@ class TennisGame1 {
   getScore() {
     let score = '';
     let tempScore = 0;
-    if (this.player1.score === this.player2.score) {
-      switch (this.player1.score) {
+    if (this.player1.score.value === this.player2.score.value) {
+      switch (this.player1.score.value) {
         case 0:
           score = 'Love-All';
           break;
@@ -29,18 +29,18 @@ class TennisGame1 {
           score = 'Deuce';
           break;
       }
-    } else if (this.player1.score >= 4 || this.player2.score >= 4) {
-      const minusResult = this.player1.score - this.player2.score;
+    } else if (this.player1.score.value >= 4 || this.player2.score.value >= 4) {
+      const minusResult = this.player1.score.value - this.player2.score.value;
       if (minusResult === 1) score = 'Advantage player1';
       else if (minusResult === -1) score = 'Advantage player2';
       else if (minusResult >= 2) score = 'Win for player1';
       else score = 'Win for player2';
     } else {
       for (let i = 1; i < 3; i += 1) {
-        if (i === 1) tempScore = this.player1.score;
+        if (i === 1) tempScore = this.player1.score.value;
         else {
           score += '-';
-          tempScore = this.player2.score;
+          tempScore = this.player2.score.value;
         }
         switch (tempScore) {
           case 0:

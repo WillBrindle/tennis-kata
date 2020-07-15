@@ -1,11 +1,13 @@
+const Score = require("./Score");
+
 class Player {
   constructor(name) {
     this.name = name;
-    this.score = 0;
+    this.score = new Score();
   }
 
   incrementScore() {
-    this.score += 1;
+    this.score.increment();
   }
 }
 
