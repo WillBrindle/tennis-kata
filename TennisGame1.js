@@ -12,26 +12,42 @@ class TennisGame1 {
   }
 
   getScore() {
-    if (this.player1.score.value === this.player2.score.value) {
-      if (this.player1.score.value < 3) {
-        return `${this.player1.score.label}-All`;
-      }
+    if (this.gameFinished()) {
+      return `Win for ${this.getLeadingPlayer().name}`;
+    }
+    if (this.isAdvantage()) {
+      return `Advantage ${this.getLeadingPlayer().name}`;
+    }
+    if (this.isDeuce()) {
       return 'Deuce';
     }
-
-    if (this.player1.score.value >= 4 || this.player2.score.value >= 4) {
-      const differenceInScores = this.player1.score.value - this.player2.score.value;
-      const winningPlayer = differenceInScores > 0 ? this.player1 : this.player2;
-      const gameFinished = Math.abs(differenceInScores) >= 2;
-
-      if (gameFinished) {
-        return `Win for ${winningPlayer.name}`;
-      }
-
-      return `Advantage ${winningPlayer.name}`;
+    if (this.player1.score.value === this.player2.score.value) {
+      return `${this.player1.score.label}-All`;
     }
 
     return `${this.player1.score.label}-${this.player2.score.label}`;
+  }
+
+  gameFinished() {
+    return this.doesEitherPlayerHaveScorePastForty()
+      && Math.abs(this.player1.score.value - this.player2.score.value) >= 2;
+  }
+
+  getLeadingPlayer() {
+    return this.player1.score.value > this.player2.score.value ? this.player1 : this.player2;
+  }
+
+  isAdvantage() {
+    return this.doesEitherPlayerHaveScorePastForty()
+      && Math.abs(this.player1.score.value - this.player2.score.value) === 1;
+  }
+
+  isDeuce() {
+    return this.player1.score.value >= 3 && this.player1.score.value === this.player2.score.value;
+  }
+
+  doesEitherPlayerHaveScorePastForty() {
+    return this.player1.score.value >= 4 || this.player2.score.value >= 4;
   }
 
   getPlayer(name) {
