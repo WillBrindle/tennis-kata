@@ -1,0 +1,14 @@
+{
+  "name": "tennis-refactoring",
+  "version": "1.0.0",
+  "description": "A kata to practice refactoring code, working with an example of Tennis scoring.",
+  "main": "TennisGame1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Will Brindle",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^26.1.0"
+  }
+}
