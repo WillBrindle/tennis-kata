@@ -15,19 +15,10 @@ class TennisGame1 {
     let score = '';
     let tempScore = 0;
     if (this.player1.score.value === this.player2.score.value) {
-      switch (this.player1.score.value) {
-        case 0:
-          score = 'Love-All';
-          break;
-        case 1:
-          score = 'Fifteen-All';
-          break;
-        case 2:
-          score = 'Thirty-All';
-          break;
-        default:
-          score = 'Deuce';
-          break;
+      if (this.player1.score.value < 3) {
+        score = `${this.player1.score.label}-All`;
+      } else {
+        score = 'Deuce';
       }
     } else if (this.player1.score.value >= 4 || this.player2.score.value >= 4) {
       const minusResult = this.player1.score.value - this.player2.score.value;
@@ -37,27 +28,12 @@ class TennisGame1 {
       else score = 'Win for player2';
     } else {
       for (let i = 1; i < 3; i += 1) {
-        if (i === 1) tempScore = this.player1.score.value;
+        if (i === 1) tempScore = this.player1.score;
         else {
           score += '-';
-          tempScore = this.player2.score.value;
+          tempScore = this.player2.score;
         }
-        switch (tempScore) {
-          case 0:
-            score += 'Love';
-            break;
-          case 1:
-            score += 'Fifteen';
-            break;
-          case 2:
-            score += 'Thirty';
-            break;
-          case 3:
-            score += 'Forty';
-            break;
-          default:
-            break;
-        }
+        score += tempScore.label;
       }
     }
     return score;
