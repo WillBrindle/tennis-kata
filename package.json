@@ -4,11 +4,19 @@
   "description": "A kata to practice refactoring code, working with an example of Tennis scoring.",
   "main": "TennisGame1.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint .",
+    "lint:fix": "npm run lint -- --fix"
   },
   "author": "Will Brindle",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.0",
     "jest": "^26.1.0"
   }
 }
