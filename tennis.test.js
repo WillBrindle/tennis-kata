@@ -1,6 +1,7 @@
 /* eslint-env jest */
 
 const TennisGame = require('./TennisGame1.js');
+const UnknownPlayerError = require('./UnknownPlayerError.js');
 
 const allScores = [
   [0, 0, 'Love-All'],
@@ -66,5 +67,28 @@ describe('test all scores', () => {
     allScores.forEach((score) => {
       checkScore(score[0], score[1], score[2]);
     });
+  });
+});
+
+describe('Test names of players', () => {
+  it('Check player names can be an arbitary string', () => {
+    const player1 = 'abcdef';
+    const player2 = '123456';
+
+    const game = new TennisGame(player1, player2);
+    game.wonPoint(player1);
+    game.wonPoint(player1);
+    game.wonPoint(player2);
+
+    expect(game.getScore()).toEqual('Thirty-Fifteen');
+  });
+
+  it('Error throw for non-existant player scoring', () => {
+    const player1 = 'abcdef';
+    const player2 = '123456';
+    const unknownPlayer = 'player1';
+
+    const game = new TennisGame(player1, player2);
+    expect(() => game.wonPoint(unknownPlayer)).toThrowError(new UnknownPlayerError(unknownPlayer));
   });
 });
