@@ -30,7 +30,7 @@ class TennisGame1 {
 
   gameFinished() {
     return this.doesEitherPlayerHaveScorePastForty()
-      && Math.abs(this.getScoreDifference()) >= 2;
+      && this.getScoreDifference() >= 2;
   }
 
   getLeadingPlayer() {
@@ -47,7 +47,7 @@ class TennisGame1 {
   }
 
   getScoreDifference() {
-    return this.player1.score.value - this.player2.score.value;
+    return Math.abs(this.player1.score.value - this.player2.score.value);
   }
 
   doesEitherPlayerHaveScorePastForty() {
