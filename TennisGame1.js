@@ -30,7 +30,7 @@ class TennisGame1 {
 
   gameFinished() {
     return this.doesEitherPlayerHaveScorePastForty()
-      && Math.abs(this.player1.score.value - this.player2.score.value) >= 2;
+      && Math.abs(this.getScoreDifference()) >= 2;
   }
 
   getLeadingPlayer() {
@@ -39,11 +39,15 @@ class TennisGame1 {
 
   isAdvantage() {
     return this.doesEitherPlayerHaveScorePastForty()
-      && Math.abs(this.player1.score.value - this.player2.score.value) === 1;
+      && this.getScoreDifference() === 1;
   }
 
   isDeuce() {
     return this.player1.score.value >= 3 && this.player1.score.value === this.player2.score.value;
+  }
+
+  getScoreDifference() {
+    return this.player1.score.value - this.player2.score.value;
   }
 
   doesEitherPlayerHaveScorePastForty() {
